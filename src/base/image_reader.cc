@@ -89,7 +89,6 @@ ImageReader::Status ImageReader::Next(Camera* camera, Image* image,
   CHECK_LE(image_index_, options_.image_list.size());
 
   const std::string image_path = options_.image_list.at(image_index_ - 1);
-
   DatabaseTransaction database_transaction(database_);
 
   //////////////////////////////////////////////////////////////////////////////
@@ -109,7 +108,6 @@ ImageReader::Status ImageReader::Next(Camera* camera, Image* image,
   //////////////////////////////////////////////////////////////////////////////
 
   const bool exists_image = database_->ExistsImageWithName(image->Name());
-
   if (exists_image) {
     *image = database_->ReadImageWithName(image->Name());
     const bool exists_keypoints = database_->ExistsKeypoints(image->ImageId());
@@ -226,6 +224,7 @@ ImageReader::Status ImageReader::Next(Camera* camera, Image* image,
 
   image_folders_.insert(image_folder);
   prev_image_folder_ = image_folder;
+    std::cout << image_path << "image _reader " << image->ImageId() << std::endl;
 
   return Status::SUCCESS;
 }

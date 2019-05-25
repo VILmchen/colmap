@@ -118,6 +118,7 @@ void DatabaseCache::Load(const Database& database, const size_t min_num_matches,
       }
     } else {
       for (const auto& image : images) {
+
         if (image_names.count(image.Name()) > 0) {
           image_ids.insert(image.ImageId());
         }

@@ -507,7 +507,11 @@ int RunFeatureExtractor(int argc, char** argv) {
     feature_extractor.Start();
     feature_extractor.Wait();
   }
-
+    std::cout << "-----" << std::endl;
+    std::cout << (*options.image_path) << std::endl;
+    for (auto it : reader_options.image_list) {
+        std::cout <<"image_list:" <<it << std::endl;
+    }
   return EXIT_SUCCESS;
 }
 
@@ -1394,7 +1398,7 @@ int RunPointTriangulator(int argc, char** argv) {
                         mapper_options.ignore_watermarks,
                         mapper_options.image_names);
 
-    if (clear_points) {
+          if (clear_points) {
       reconstruction.DeleteAllPoints2DAndPoints3D();
       reconstruction.TranscribeImageIdsToDatabase(database);
     }

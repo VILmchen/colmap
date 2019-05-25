@@ -646,7 +646,7 @@ image_t Database::WriteImage(const Image& image,
 
   SQLITE3_CALL(sqlite3_step(sql_stmt_add_image_));
   SQLITE3_CALL(sqlite3_reset(sql_stmt_add_image_));
-
+  std::cout << image.Name() << " " << sqlite3_last_insert_rowid((database_)) << std::endl;
   return static_cast<image_t>(sqlite3_last_insert_rowid(database_));
 }
 
